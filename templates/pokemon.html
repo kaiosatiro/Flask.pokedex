@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type ="text/css" href="../static/style/pokemon.css">
+    <script type="text/javascript" defer>
+        var color = '{{ cor[1] }}'
+    </script>
+    <script type="text/javascript" 
+    src={{url_for('static', filename="./script/notfound_cores.js")}} defer></script>
+    <title>Pokemon</title>
+</head>
+<body>
+    <img src={{imagem}} alt="Pokemon" height="200" class="imagem">
+    <h1>{{id}} - {{nome.capitalize()}}</h1>
+    <h2>Altura: {{altura}}</h2>
+    <h2>Peso: {{peso}}</h2>
+    <h2>Cor predominante: {{cor[0].capitalize()}}</h2>
+    <h2>
+        <ul id="ul">Tipo:
+            {% for item in tipos %}
+            <li>{{ item.capitalize() }}</li>
+            {% endfor %}
+        </ul>
+    </h2>
+    <h3>
+        {% if evol_anterior %}
+            Evolução de: {{evol_anterior}}
+        {% endif %}
+    </h3>
+    <h3>
+        {% if evol_posteriores %}
+        <ul>Evolui para: 
+            {% for item in evol_posteriores %}
+            <li>{{item}}</li>
+        {% endfor %}</ul>
+        {% endif %}
+    </h3>
+</body>
+</html>
